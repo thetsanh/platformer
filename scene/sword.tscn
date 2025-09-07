@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://da4j376k56okq"]
+
+[ext_resource type="Script" uid="uid://dbdu57v1mk34q" path="res://script/sword.gd" id="1_bk6pr"]
+[ext_resource type="Texture2D" uid="uid://c8re75qlju5d2" path="res://brackeys_platformer_assets/KeyFly/Free - Raven Fantasy Icons/Separated Files/16x16/fa1449.png" id="1_xhjsy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhjsy"]
+size = Vector2(16, 16)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xhjsy"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1.1, 1)
+emission_shape = 1
+emission_sphere_radius = 15.45
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 18.46
+radial_accel_max = 18.46
+scale_min = 0.3
+scale_max = 0.9
+anim_speed_min = 0.25
+anim_speed_max = 0.55
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2yo3"]
+size = Vector2(16, 16)
+
+[node name="basic_sword" type="Area2D"]
+z_index = 5
+script = ExtResource("1_bk6pr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xhjsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xhjsy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 10
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_xhjsy")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v2yo3")
